@@ -62,19 +62,19 @@ duration: "5:23",
 
 ];
 
-let isPlaying = false;
+let isPlaying = false;   //normalda  mahni oz ozune oxumur deye false yaziriq
 let songIndex = 0;
 
 durationEl.textContent = `${fakeData[songIndex].duration}`;
 
 const playSong = () => {
-    songEl.play();
+    songEl.play();                //????????????????
     isPlaying = true;
     playBtn.innerHTML = '<img src="./assets/pause-solid.svg" alt="" class="w-12 h-12 bg-white rounded-[50%]">'
 };
 
 const pauseSong = () => {
-    songEl.pause();
+    songEl.pause();                    //???????????????????/
     isPlaying = false;
     playBtn.innerHTML = '<img src="./assets/Vector (1).png" alt="" class="w-12 h-12">'
 };
@@ -102,8 +102,8 @@ const {duration, currentTime} = event.target;                     //arrow functi
 if(!duration) return;                  //duration NaN olmasin deye
 // console.log(duration, currentTime);
 
-const durationMinute = Math.floor(duration / 60);  //233/60= 3.88 // 3
-const durationSecond = Math.floor(duration % 60);    //233%60 = 53.11 // 53
+const durationMinute = Math.floor(duration / 60);  
+const durationSecond = Math.floor(duration % 60);    
 //    console.log(durationMinute, durationSecond);
 
 const currentTimeMinute = Math.floor(currentTime / 60);  //2.76443/60
@@ -157,13 +157,12 @@ songIndex < fakeData.length - 1 ? songIndex++ : (songIndex = 0);
 displaySong();
 playSong();
  };
- 
+
 
  progressContainerVolumeEl.addEventListener("click", (event) => {
     const clickPercent = event.offsetX / event.target.offsetWidth;
-    songEl.volume = clickPercent;  // Set the volume directly to the click percentage
+    songEl.volume = clickPercent;  
     
-    // Update the visual progress bar for volume
     progressVolumeEl.style.width = `${clickPercent * 100}%`;
 });
 
@@ -171,3 +170,4 @@ playSong();
 
 
  songEl.addEventListener("ended", nextSong);
+ 
